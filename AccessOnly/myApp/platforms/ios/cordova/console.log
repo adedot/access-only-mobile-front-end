@@ -1,0 +1,9 @@
+2014-07-30 21:04:24.815 myApp[8248:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-30 21:04:25.284 myApp[8248:70b] Unlimited access to network resources
+2014-07-30 21:04:27.792 myApp[8248:70b] [CDVTimer][keyboard] 0.083983ms
+2014-07-30 21:04:27.792 myApp[8248:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-07-30 21:04:27.793 myApp[8248:70b] [CDVTimer][statusbar] 0.500023ms
+2014-07-30 21:04:27.793 myApp[8248:70b] [CDVTimer][TotalPluginStartup] 1.639009ms
+2014-07-30 21:04:30.120 myApp[8248:70b] Resetting plugins due to page load.
+2014-07-30 21:04:36.124 myApp[8248:70b] Finished load of: file:///Users/marcusafinley/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/091C6A80-694C-432C-BD6A-D625862A7338/myApp.app/www/index.html#/app/playlists
+2014-07-30 21:04:39.134 myApp[8248:70b] THREAD WARNING: ['Device'] took '16.704102' ms. Plugin should use a background thread.
