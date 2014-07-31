@@ -32,8 +32,8 @@
     <description>
         An Ionic Framework and Cordova project.
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="info@accessonly.com" href="http://accesson.ly/">
+      Team AccessOnly
     </author>
     <content src="index.html" />
     <access origin="*" />

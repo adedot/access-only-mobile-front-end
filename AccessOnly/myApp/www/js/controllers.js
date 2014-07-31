@@ -33,16 +33,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('VenuesCtrl', function($scope) {
+
+  // Get list of venues
+  $scope.venues = [
+    { name: 'Rose Bar', id: 1 },
+    { name: 'Shadow Room', id: 2 },
+    { name: 'Lux Lounge', id: 3 },
+    { name: 'Bar 7', id: 4 },
+    { name: 'Josephines', id: 5 },
+    { name: 'Eden', id: 6 }
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('VenueCtrl', function($scope, $stateParams) {
 })
