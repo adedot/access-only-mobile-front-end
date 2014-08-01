@@ -1,0 +1,12 @@
+<ion-view title="Venues">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.name}}">
+        {{venue.name}}  {{venue.address}} {{venue.city}}, {{venue.state}} 
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

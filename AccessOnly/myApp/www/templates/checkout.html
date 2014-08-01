@@ -1,0 +1,35 @@
+<ion-view title="Checkout">
+  <ion-content class="has-header">
+  <ion-list>
+  <div class="list">
+    <h1>Checkout</h1>
+    <!-- Add credit card form-->
+    <form role="form">
+  <div>
+    <label>Name on Card</label>
+    <input type="text" id="cc-name" autocomplete="off" placeholder="John Doe" />
+  </div>
+  <div>
+    <label>Card Number</label>
+    <input type="text" id="cc-number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
+  </div>
+  <div>
+    <label>Expiration</label>
+    <input type="text" id="cc-ex-month" autocomplete="off" placeholder="01" maxlength="2" />
+    <input type="text" id="cc-ex-year" autocomplete="off" placeholder="2013" maxlength="4" />
+  </div>
+  <div>
+    <label>Card Verification Code (CVV)</label>
+    <input type="text" id="ex-cvv" autocomplete="off" placeholder="453" maxlength="4" />
+  </div>
+  <div>
+    <label>Postal Code</label>
+    <input type="text" id="ex-postal-code" autocomplete="off" placeholder="453" />
+  </div>
+
+  <a href="" id="cc-submit">Tokenize</a>
+</form>
+</div>
+</ion-list>
+  </ion-content>
+</ion-view>
