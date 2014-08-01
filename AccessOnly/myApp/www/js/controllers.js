@@ -33,17 +33,29 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('VenuesCtrl', function($scope) {
+.controller('VenuesCtrl', function($scope, $http) {
 
-  // Get list of venues
-  $scope.venues = [
-    { name: 'Rose Bar', id: 1 },
-    { name: 'Shadow Room', id: 2 },
-    { name: 'Lux Lounge', id: 3 },
-    { name: 'Bar 7', id: 4 },
-    { name: 'Josephines', id: 5 },
-    { name: 'Eden', id: 6 }
+    // $scope.venues= $http.get("http://localhost:5000/venues").success(function(data) {
+    //     $scope.venues = data;
+    //     console.log(scope.venues);
+    //   });
+
+  //   // Get list of venues
+    $scope.venues = [
+    {
+      "id": 1,
+      "name": "Rosebar",
+      "address": "1215 Connecticut Ave NW",
+      "city": "Washington",
+      "state": "DC",
+      "description": "",
+      "dressCode": null,
+      "createdAt": "2014-08-01T01:11:52.174Z",
+      "updatedAt": "2014-08-01T01:11:52.174Z"
+    }
   ];
+
+
 })
 
 .controller('VenueCtrl', function($scope, $stateParams) {
