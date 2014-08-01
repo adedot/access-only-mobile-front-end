@@ -1,35 +1,82 @@
+<script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js">
+
+
+function handleResponse(response) {
+  if (response.status_code === 201) {
+    var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+    // Call your backend
+    jQuery.post("http://http://localhost:5000/cart/checkout", {
+      uri: fundingInstrument.href,
+      amount: 9000, 
+      cardId: 1
+    }, function(r) {
+      // Check your backend response
+      if (r.status === 201) {
+      	console.log("successful");
+        // Your successful logic here from backend ruby
+      } else {
+      	//
+      	console.log("Hello");
+      }
+    });
+  } else {
+    console.log("Failed");
+  }
+}
+
+$('#cc-submit').click(function (e) {
+  e.preventDefault();
+
+  var payload = {
+    name: $('#cc-name').val(),
+    number: $('#cc-number').val(),
+    expiration_month: $('#cc-ex-month').val(),
+    expiration_year: $('#cc-ex-year').val(),
+    cvv: $('#ex-cvv').val(),
+    address: {
+      postal_code: $('#ex-postal-code').val()
+    }
+  };
+
+  // Create credit card
+  balanced.card.create(payload, handleResponse);
+});
+</script>
+
 <ion-view title="Checkout">
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
   <ion-content class="has-header">
-  <ion-list>
-  <div class="list">
+  <div class="list list-inset">
     <h1>Checkout</h1>
     <!-- Add credit card form-->
+    <ion-list>
     <form role="form">
-  <div>
-    <label>Name on Card</label>
+    <label class="item item-input"> Name on Card</label>
     <input type="text" id="cc-name" autocomplete="off" placeholder="John Doe" />
-  </div>
-  <div>
-    <label>Card Number</label>
+    
+  	
+    <label class="item item-input">Card Number</label>
     <input type="text" id="cc-number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
-  </div>
-  <div>
-    <label>Expiration</label>
+  
+  
+    <label class="item item-input">Expiration</label>
     <input type="text" id="cc-ex-month" autocomplete="off" placeholder="01" maxlength="2" />
     <input type="text" id="cc-ex-year" autocomplete="off" placeholder="2013" maxlength="4" />
-  </div>
-  <div>
-    <label>Card Verification Code (CVV)</label>
+  
+  
+    <label class="item item-input">Card Verification Code (CVV)</label>
     <input type="text" id="ex-cvv" autocomplete="off" placeholder="453" maxlength="4" />
-  </div>
-  <div>
-    <label>Postal Code</label>
+  
+    <label class="item item-input">Postal Code</label>
     <input type="text" id="ex-postal-code" autocomplete="off" placeholder="453" />
-  </div>
 
-  <a href="" id="cc-submit">Tokenize</a>
-</form>
+    <a href="" id="cc-submit">Tokenize</a>
+
+
+	</form>
 </div>
-</ion-list>
+	</ion-list>
   </ion-content>
 </ion-view>
