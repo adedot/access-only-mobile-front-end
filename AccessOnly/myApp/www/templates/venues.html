@@ -4,7 +4,7 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.id}}">
+      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.name}}">
         {{venue.name}}  {{venue.address}} {{venue.city}}, {{venue.state}} 
       </ion-item>
     </ion-list>

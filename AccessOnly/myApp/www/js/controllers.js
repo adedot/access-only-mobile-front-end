@@ -35,28 +35,36 @@ angular.module('starter.controllers', [])
 
 .controller('VenuesCtrl', function($scope, $http) {
 
-    // $scope.venues= $http.get("http://localhost:5000/venues").success(function(data) {
-    //     $scope.venues = data;
-    //     console.log(scope.venues);
-    //   });
+    $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
+        $scope.venues = data;
+        console.log(scope.venues);
+      });
 
   //   // Get list of venues
-    $scope.venues = [
-    {
-      "id": 1,
-      "name": "Rosebar",
-      "address": "1215 Connecticut Ave NW",
-      "city": "Washington",
-      "state": "DC",
-      "description": "",
-      "dressCode": null,
-      "createdAt": "2014-08-01T01:11:52.174Z",
-      "updatedAt": "2014-08-01T01:11:52.174Z"
-    }
-  ];
+  //   $scope.venues = [
+  //   {
+  //     "id": 1,
+  //     "name": "Rosebar",
+  //     "address": "1215 Connecticut Ave NW",
+  //     "city": "Washington",
+  //     "state": "DC",
+  //     "description": "",
+  //     "dressCode": null,
+  //     "createdAt": "2014-08-01T01:11:52.174Z",
+  //     "updatedAt": "2014-08-01T01:11:52.174Z"
+  //   }
+  // ];
 
 
 })
 
-.controller('VenueCtrl', function($scope, $stateParams) {
+.controller('VenueCtrl', function($scope, $stateParams, $http) {
+
+  var venuename=$stateParams["venueName"];
+
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename).success(function(data) {
+        $scope.products = data;
+        console.log(scope.products);
+      });
+
 })

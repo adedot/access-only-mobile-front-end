@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.single', {
-      url: "/venues/:id",
+      url: "/venues/:venueName",
       views: {
         'menuContent' :{
           templateUrl: "templates/venue.html",
