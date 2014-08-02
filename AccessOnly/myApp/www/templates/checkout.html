@@ -1,46 +1,8 @@
-<script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js">
+<script type="text/javascript">
 
 
-function handleResponse(response) {
-  if (response.status_code === 201) {
-    var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-    // Call your backend
-    jQuery.post("http://http://localhost:5000/cart/checkout", {
-      uri: fundingInstrument.href,
-      amount: 9000, 
-      cardId: 1
-    }, function(r) {
-      // Check your backend response
-      if (r.status === 201) {
-      	console.log("successful");
-        // Your successful logic here from backend ruby
-      } else {
-      	//
-      	console.log("Hello");
-      }
-    });
-  } else {
-    console.log("Failed");
-  }
-}
 
-$('#cc-submit').click(function (e) {
-  e.preventDefault();
 
-  var payload = {
-    name: $('#cc-name').val(),
-    number: $('#cc-number').val(),
-    expiration_month: $('#cc-ex-month').val(),
-    expiration_year: $('#cc-ex-year').val(),
-    cvv: $('#ex-cvv').val(),
-    address: {
-      postal_code: $('#ex-postal-code').val()
-    }
-  };
-
-  // Create credit card
-  balanced.card.create(payload, handleResponse);
-});
 </script>
 
 <ion-view title="Checkout">
@@ -52,28 +14,27 @@ $('#cc-submit').click(function (e) {
     <h1>Checkout</h1>
     <!-- Add credit card form-->
     <ion-list>
-    <form role="form">
+    <form role="form" ng-submit="processForm()">
     <label class="item item-input"> Name on Card</label>
-    <input type="text" id="cc-name" autocomplete="off" placeholder="John Doe" />
+    <input type="text" id="cc-name" ng-model="payload.name" autocomplete="off" placeholder="John Doe" />
     
   	
     <label class="item item-input">Card Number</label>
-    <input type="text" id="cc-number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
+    <input type="text" id="cc-number" ng-model="payload.number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
   
   
     <label class="item item-input">Expiration</label>
-    <input type="text" id="cc-ex-month" autocomplete="off" placeholder="01" maxlength="2" />
-    <input type="text" id="cc-ex-year" autocomplete="off" placeholder="2013" maxlength="4" />
+    <input type="text" id="cc-ex-month" ng-model="payload.expiration_month" autocomplete="off" placeholder="01" maxlength="2" />
+    <input type="text" id="cc-ex-year" ng-model="payload.expiration_year" autocomplete="off" placeholder="2013" maxlength="4" />
   
   
     <label class="item item-input">Card Verification Code (CVV)</label>
-    <input type="text" id="ex-cvv" autocomplete="off" placeholder="453" maxlength="4" />
-  
-    <label class="item item-input">Postal Code</label>
-    <input type="text" id="ex-postal-code" autocomplete="off" placeholder="453" />
+    <input type="text" id="ex-cvv" ng-model="payload.cvv" autocomplete="off" placeholder="453" maxlength="4" />
 
-    <a href="" id="cc-submit">Tokenize</a>
-
+    <!-- SUBMIT BUTTON -->
+	<button id="cc-submit" ng-click="submit(payload)" type="submit" class="btn btn-success btn-lg btn-block">
+		<span class="glyphicon glyphicon-flash"></span> Submit
+	</button>
 
 	</form>
 </div>

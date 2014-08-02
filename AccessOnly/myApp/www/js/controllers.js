@@ -50,19 +50,45 @@ angular.module('starter.controllers', [])
 
   $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename).success(function(data) {
         $scope.products = data;
-        console.log(scope.products);
+        console.log($scope.products);
       });
 
 })
 
 .controller('CheckoutCtrl', function($scope, $stateParams, $http) {
 
-  // var venuename=$stateParams["venueName"];
 
-  // $scope.products = $http.get("http://http://localhost:5000/venues/products?venuename="+venuename).success(function(data) {
-  //       $scope.products = data;
-  //       console.log(scope.products);
-  //     });
+  function handleResponse(response) {
+    if (response.status_code === 201) {
+      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+      // Call your backend
+      $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
+        uri: fundingInstrument.href,
+        amount: 9000, 
+        cardId: 1
+      }, function(r) {
+        // Check your backend response
+        if (r.status === 201) {
+          console.log("successful");
+          // Your successful logic here from backend ruby
+        } else {
+          //
+          console.log("Hello");
+        }
+      });
+    } else {
+      console.log("Failed");
+    }
+  };
+
+  // Get Credit Card Information and create credit card charge
+  $scope.submit = function(payload) {
+
+    balanced.card.create(payload, handleResponse);
+  };
+
+
+ 
 
 })
 

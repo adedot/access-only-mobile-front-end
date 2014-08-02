@@ -57,12 +57,12 @@ angular.module('starter.controllers', [])
 
 .controller('CheckoutCtrl', function($scope, $stateParams, $http) {
 
-  var venuename=$stateParams["venueName"];
+  // var venuename=$stateParams["venueName"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename).success(function(data) {
-        $scope.products = data;
-        console.log(scope.products);
-      });
+  // $scope.products = $http.get("http://http://localhost:5000/venues/products?venuename="+venuename).success(function(data) {
+  //       $scope.products = data;
+  //       console.log(scope.products);
+  //     });
 
 })
 
