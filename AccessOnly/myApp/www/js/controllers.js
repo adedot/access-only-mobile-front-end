@@ -66,12 +66,13 @@ angular.module('starter.controllers', [])
         uri: fundingInstrument.href,
         amount: 9000, 
         cardId: 1
-      }, function(r) {
+      }).success(function(r) {
+
         // Check your backend response
-        if (r.status === 201) {
+        if (response.status_code == 201) {
           console.log("successful");
           // Go to Receipt Page
-          $location.path("/receipt");
+          $location.path( "/app/receipt" );
 
         } else {
           // Add alert 
@@ -91,7 +92,6 @@ angular.module('starter.controllers', [])
  
 
 })
-
 
 .controller('ReceiptCtrl', function($scope){
 
