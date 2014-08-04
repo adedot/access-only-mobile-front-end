@@ -37,10 +37,22 @@ angular.module('starter.controllers', [])
 
 .controller('VenuesCtrl', function($scope, $http) {
 
-    $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
-        $scope.venues = data;
-        console.log(scope.venues);
-      });
+    // set the session transaction number
+
+
+  $scope.venues = $http.get("http://localhost:5000/venues").success(function(data) {
+      $scope.venues = data;
+      console.log(scope.venues);
+    });
+
+
+
+  // On click set the amount
+  $scope.submit = function() {
+
+      sessionStorage.transaction_number = 8000;
+
+  }; 
 
 })
 
@@ -48,37 +60,41 @@ angular.module('starter.controllers', [])
 
   var venuename=$stateParams["venueName"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename).success(function(data) {
+  $scope.products = $http.get("http://localhost:5000/venues/products?venuename="+venuename.trim()).success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
+
+  // On click set the amount
+  $scope.submit = function(product) {
+
+    sessionStorage.amount = product.price;
+
+  }; 
 
 })
 
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
+  
+ 
 
   function handleResponse(response) {
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
-      $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
+       $scope.data = $http.post("http://localhost:5000/cart/checkout", {
         uri: fundingInstrument.href,
-        amount: 9000, 
-        cardId: 1
-      }).success(function(r) {
-
-        // Check your backend response
-        if (response.status_code == 201) {
-          console.log("successful");
+        amount: sessionStorage.amount, 
+        cartId: sessionStorage.transaction_number
+      }).success(function(data) {
           // Go to Receipt Page
           $location.path( "/app/receipt" );
-
-        } else {
-          // Add alert 
-          console.log("Hello");
-        }
+          $scope.data = data;
+       
       });
+
+
     } else {
       console.log("Failed");
     }
@@ -93,9 +109,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ReceiptCtrl', function($scope){
+.controller('ReceiptCtrl', function($scope, $http){
 
-  // 
+  // // Get Order number from session
+  // http.get("").success(){
+
+  // }
+
 
 })
 

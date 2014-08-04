@@ -2,7 +2,7 @@
   <ion-content class="has-header">
     <h1>Products</h1>
     <ion-list>
-      <ion-item ng-repeat="product in products" href="#/app/checkout">
+      <ion-item ng-repeat="product in products" href="#/app/checkout" ng-click="submit(product)">
         {{product.name}}  ${{product.price}}
     </ion-list>
   </ion-content>
