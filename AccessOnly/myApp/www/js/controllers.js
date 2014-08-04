@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
     // set the session transaction number
 
 
-  $scope.venues = $http.get("http://localhost:5000/venues").success(function(data) {
+  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
       $scope.venues = data;
       console.log(scope.venues);
     });
@@ -60,7 +60,7 @@ angular.module('starter.controllers', [])
 
   var venuename=$stateParams["venueName"];
 
-  $scope.products = $http.get("http://localhost:5000/venues/products?venuename="+venuename.trim()).success(function(data) {
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename.trim()).success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
-       $scope.data = $http.post("http://localhost:5000/cart/checkout", {
+       $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
         cartId: sessionStorage.transaction_number
