@@ -55,7 +55,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('CheckoutCtrl', function($scope, $stateParams, $http) {
+.controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
 
   function handleResponse(response) {
@@ -70,9 +70,11 @@ angular.module('starter.controllers', [])
         // Check your backend response
         if (r.status === 201) {
           console.log("successful");
-          // Your successful logic here from backend ruby
+          // Go to Receipt Page
+          $location.path("/receipt");
+
         } else {
-          //
+          // Add alert 
           console.log("Hello");
         }
       });
@@ -86,9 +88,14 @@ angular.module('starter.controllers', [])
 
     balanced.card.create(payload, handleResponse);
   };
-
-
  
+
+})
+
+
+.controller('ReceiptCtrl', function($scope){
+
+  // 
 
 })
 

@@ -56,8 +56,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
-
+    .state('app.receipt', {
+      url: "/receipt",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/receipt.html",
+          controller: 'ReceiptCtrl'
+        }
+      }
+    })
     .state('app.venues', {
       url: "/venues",
       views: {

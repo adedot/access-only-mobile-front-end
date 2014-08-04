@@ -1,10 +1,3 @@
-<script type="text/javascript">
-
-
-
-
-</script>
-
 <ion-view title="Checkout">
 <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -14,30 +7,30 @@
     <h1>Checkout</h1>
     <!-- Add credit card form-->
     <ion-list>
-    <form role="form" ng-submit="processForm()">
-    <label class="item item-input"> Name on Card</label>
-    <input type="text" id="cc-name" ng-model="payload.name" autocomplete="off" placeholder="John Doe" />
-    
-  	
-    <label class="item item-input">Card Number</label>
-    <input type="text" id="cc-number" ng-model="payload.number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
-  
-  
-    <label class="item item-input">Expiration</label>
-    <input type="text" id="cc-ex-month" ng-model="payload.expiration_month" autocomplete="off" placeholder="01" maxlength="2" />
-    <input type="text" id="cc-ex-year" ng-model="payload.expiration_year" autocomplete="off" placeholder="2013" maxlength="4" />
-  
-  
-    <label class="item item-input">Card Verification Code (CVV)</label>
-    <input type="text" id="ex-cvv" ng-model="payload.cvv" autocomplete="off" placeholder="453" maxlength="4" />
+	    <form role="form" ng-submit="processForm()">
+	    <label class="item item-input"> Name on Card</label>
+	    <input type="text" id="cc-name" ng-model="payload.name" autocomplete="off" placeholder="John Doe" />
+	    
+	  	
+	    <label class="item item-input">Card Number</label>
+	    <input type="text" id="cc-number" ng-model="payload.number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
+	  
+	  
+	    <label class="item item-input">Expiration</label>
+	    <input type="text" id="cc-ex-month" ng-model="payload.expiration_month" autocomplete="off" placeholder="01" maxlength="2" />
+	    <input type="text" id="cc-ex-year" ng-model="payload.expiration_year" autocomplete="off" placeholder="2013" maxlength="4" />
+	  
+	  
+	    <label class="item item-input">Card Verification Code (CVV)</label>
+	    <input type="text" id="ex-cvv" ng-model="payload.cvv" autocomplete="off" placeholder="453" maxlength="4" />
 
-    <!-- SUBMIT BUTTON -->
-	<button id="cc-submit" ng-click="submit(payload)" type="submit" class="btn btn-success btn-lg btn-block">
-		<span class="glyphicon glyphicon-flash"></span> Submit
-	</button>
+	    <!-- SUBMIT BUTTON -->
+		<button id="cc-submit" ng-click="submit(payload)" type="submit" class="btn btn-success btn-lg btn-block">
+			<span class="glyphicon glyphicon-flash"></span> Submit
+		</button>
 
-	</form>
-</div>
+		</form>
+	</div>
 	</ion-list>
   </ion-content>
 </ion-view>
