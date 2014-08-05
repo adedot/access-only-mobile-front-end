@@ -121,6 +121,7 @@
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/checkout.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/login.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/menu.html \
+/Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/receipt.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/search.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/venue.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/venues.html \

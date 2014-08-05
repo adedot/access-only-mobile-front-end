@@ -116,6 +116,15 @@ angular.module('starter.controllers', [])
 
   // }
 
+    $scope.order = {amount:sessionStorage.amount};
+
+    // On click set the amount
+  $scope.submit = function(product) {
+
+    sessionStorage.amount = 0;
+    sessionStorage.transaction_number = 0;
+  };
+
 
 })
 
