@@ -76,17 +76,27 @@ angular.module('starter.controllers', [])
 
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
-  
- 
 
-  function handleResponse(response) {
+  // Get Credit Card Information and create credit card charge
+  $scope.submit = function(payload, user) {
+
+    sessionStorage.email = user.email;
+    sessionStorage.phone = user.phone;
+    balanced.card.create(payload, handleResponse);
+    
+
+  };
+
+    function handleResponse(response) {
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
        $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
-        cartId: sessionStorage.transaction_number
+        cartId: sessionStorage.transaction_number,
+        email: sessionStorage.email, 
+        phone: sessionStorage.phone
       }).success(function(data) {
           // Go to Receipt Page
           $location.path( "/app/receipt" );
@@ -98,12 +108,6 @@ angular.module('starter.controllers', [])
     } else {
       console.log("Failed");
     }
-  };
-
-  // Get Credit Card Information and create credit card charge
-  $scope.submit = function(payload) {
-
-    balanced.card.create(payload, handleResponse);
   };
  
 
