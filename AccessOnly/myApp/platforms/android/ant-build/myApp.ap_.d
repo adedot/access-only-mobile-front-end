@@ -124,5 +124,6 @@
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/receipt.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/search.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/venue.html \
+/Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/venueproducts.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/venues.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/ant-build/AndroidManifest.xml \

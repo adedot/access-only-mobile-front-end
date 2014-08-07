@@ -37,15 +37,10 @@ angular.module('starter.controllers', [])
 
 .controller('VenuesCtrl', function($scope, $http) {
 
-    // set the session transaction number
-
-
   $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
       $scope.venues = data;
       console.log(scope.venues);
     });
-
-
 
   // On click set the amount
   $scope.submit = function() {
@@ -58,28 +53,46 @@ angular.module('starter.controllers', [])
 
 .controller('VenueCtrl', function($scope, $stateParams, $http) {
 
-  var venuename=$stateParams["venueName"];
+  var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename.trim()).success(function(data) {
-        $scope.products = data;
-        console.log($scope.products);
+  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId).success(function(data) {
+        $scope.venues = data;
+        console.log($scope.venues);
       });
 
   // On click set the amount
-  $scope.submit = function(product) {
+  $scope.submit = function() {
 
-    sessionStorage.amount = product.price;
+      sessionStorage.transaction_number = 8000;
 
   }; 
 
 })
 
+.controller('ProductsCtrl', function($scope, $stateParams, $http) {
+
+  var venueId = $stateParams["id"];
+
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products/"+venueId).success(function(data) {
+        $scope.products = data;
+        console.log($scope.products);
+      });
+
+    // On click set the amount
+  $scope.submit = function(product) {
+
+      sessionStorage.amount = product.price;
+
+  }; 
+
+})
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
 
   // Get Credit Card Information and create credit card charge
   $scope.submit = function(payload, user) {
 
+    sessionStorage.name = payload.name;
     sessionStorage.email = user.email;
     sessionStorage.phone = user.phone;
     balanced.card.create(payload, handleResponse);
@@ -106,27 +119,30 @@ angular.module('starter.controllers', [])
 
 
     } else {
-      console.log("Failed");
+      alert("Process has failed");
+      // Failure page
     }
   };
  
 
 })
 
-.controller('ReceiptCtrl', function($scope, $http){
+.controller('ReceiptCtrl', function($scope, $http, $location){
 
-  // // Get Order number from session
-  // http.get("").success(){
 
-  // }
-
-    $scope.order = {amount:sessionStorage.amount};
+    $scope.order_info = {
+      name: sessionStorage.name, 
+      email: sessionStorage.email, 
+        phone: sessionStorage.phone,
+      amount:sessionStorage.amount};
 
     // On click set the amount
   $scope.submit = function(product) {
 
     sessionStorage.amount = 0;
     sessionStorage.transaction_number = 0;
+
+    $location.path( "/app/venues" );
   };
 
 

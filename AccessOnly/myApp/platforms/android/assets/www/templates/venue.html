@@ -1,10 +1,14 @@
-<ion-view title="Venue">
+<ion-view title="Venues">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
   <ion-content class="has-header">
-    <h1>Products</h1>
     <ion-list>
-      <ion-item ng-repeat="product in products" href="#/app/checkout" ng-click="submit(product)">
-        {{product.name}}  Price: ${{product.price}} <br>
-        {{product.description}}
+      <ion-item ng-repeat="venue in venues" href="#/app/venues/products/{{venue.id}}" ng-click="submit()">
+       <p>Name: {{venue.name}} </p>
+      <p>Address: {{venue.address}}</p>
+      <p> {{venue.city}}, {{venue.state}} </p>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

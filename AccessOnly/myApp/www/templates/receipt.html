@@ -1,10 +1,14 @@
 <ion-view title="Venue">
   <ion-content class="has-header">
-    <h1>Receipt</h1>
+    <h1>Customer Receipt for {{order_info.name}}</h1>
     <ion-list>
-      Payment Sucessful for ${{order.amount}}
 
-      	<br>
+    	<p>Name: {{order_info.name}} </p>
+    	</p>Email: {{order_info.email}} </p>
+    	</p>Phone: {{order_info.phone}} </p>
+      </p>Payment Sucessful in the amount of ${{order_info.amount}}</p>
+
+      	
 
       	    <!-- SUBMIT BUTTON -->
 		<button id="cc-submit" ng-click="submit()" type="submit" class="btn btn-success btn-lg btn-block">

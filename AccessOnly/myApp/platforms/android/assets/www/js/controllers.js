@@ -37,15 +37,10 @@ angular.module('starter.controllers', [])
 
 .controller('VenuesCtrl', function($scope, $http) {
 
-    // set the session transaction number
-
-
   $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
       $scope.venues = data;
       console.log(scope.venues);
     });
-
-
 
   // On click set the amount
   $scope.submit = function() {
@@ -58,9 +53,27 @@ angular.module('starter.controllers', [])
 
 .controller('VenueCtrl', function($scope, $stateParams, $http) {
 
-  var venuename=$stateParams["venueName"];
+  var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products?venuename="+venuename.trim()).success(function(data) {
+  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId).success(function(data) {
+        $scope.venues = data;
+        console.log($scope.venues);
+      });
+
+  // On click set the amount
+  $scope.submit = function() {
+
+      sessionStorage.transaction_number = 8000;
+
+  }; 
+
+})
+
+.controller('ProductsCtrl', function($scope, $stateParams, $http) {
+
+  var venueId = $stateParams["id"];
+
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products/"+venueId).success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
@@ -68,25 +81,35 @@ angular.module('starter.controllers', [])
   // On click set the amount
   $scope.submit = function(product) {
 
-    sessionStorage.amount = product.price;
+    
 
   }; 
 
 })
-
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
-  
- 
 
-  function handleResponse(response) {
+  // Get Credit Card Information and create credit card charge
+  $scope.submit = function(payload, user) {
+
+    sessionStorage.name = payload.name;
+    sessionStorage.email = user.email;
+    sessionStorage.phone = user.phone;
+    balanced.card.create(payload, handleResponse);
+    
+
+  };
+
+    function handleResponse(response) {
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
        $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
-        cartId: sessionStorage.transaction_number
+        cartId: sessionStorage.transaction_number,
+        email: sessionStorage.email, 
+        phone: sessionStorage.phone
       }).success(function(data) {
           // Go to Receipt Page
           $location.path( "/app/receipt" );
@@ -99,12 +122,6 @@ angular.module('starter.controllers', [])
       console.log("Failed");
     }
   };
-
-  // Get Credit Card Information and create credit card charge
-  $scope.submit = function(payload) {
-
-    balanced.card.create(payload, handleResponse);
-  };
  
 
 })
@@ -116,7 +133,11 @@ angular.module('starter.controllers', [])
 
   // }
 
-    $scope.order = {amount:sessionStorage.amount};
+    $scope.order_info = {
+      name: sessionStorage.name, 
+      email: sessionStorage.email, 
+        phone: sessionStorage.phone,
+      amount:sessionStorage.amount};
 
     // On click set the amount
   $scope.submit = function(product) {

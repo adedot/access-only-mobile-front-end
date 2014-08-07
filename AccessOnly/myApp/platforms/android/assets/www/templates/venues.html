@@ -4,8 +4,8 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.name}}" ng-click="submit()">
-       Name: {{venue.name}}  Address: {{venue.address}} {{venue.city}}, {{venue.state}} 
+      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.id}}" ng-click="submit()">
+       <p>{{venue.name}} </p>
       </ion-item>
     </ion-list>
   </ion-content>

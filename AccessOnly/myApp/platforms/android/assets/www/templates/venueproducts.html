@@ -1,0 +1,12 @@
+<ion-view title="Venue">
+  <ion-content class="has-header">
+    <h1>Products</h1>
+    <ion-list>
+      <ion-item ng-repeat="product in products" href="#/app/checkout" ng-click="submit(product)">
+        <p>{{product.name}}</p>
+        <p>Price: ${{product.price}}</p>
+        <p>{{product.description}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
