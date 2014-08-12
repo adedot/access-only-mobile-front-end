@@ -78,10 +78,10 @@ angular.module('starter.controllers', [])
         console.log($scope.products);
       });
 
-  // On click set the amount
+    // On click set the amount
   $scope.submit = function(product) {
 
-    
+      sessionStorage.amount = product.price;
 
   }; 
 
@@ -119,19 +119,16 @@ angular.module('starter.controllers', [])
 
 
     } else {
-      console.log("Failed");
+      alert("Process has failed");
+      // Failure page
     }
   };
  
 
 })
 
-.controller('ReceiptCtrl', function($scope, $http){
+.controller('ReceiptCtrl', function($scope, $http, $location){
 
-  // // Get Order number from session
-  // http.get("").success(){
-
-  // }
 
     $scope.order_info = {
       name: sessionStorage.name, 
@@ -144,6 +141,8 @@ angular.module('starter.controllers', [])
 
     sessionStorage.amount = 0;
     sessionStorage.transaction_number = 0;
+
+    $location.path( "/app/venues" );
   };
 
 
