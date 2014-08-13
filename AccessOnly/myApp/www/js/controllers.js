@@ -72,7 +72,7 @@ angular.module('starter.controllers', [])
 
   var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products/"+venueId).success(function(data) {
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId+ "/products").success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });

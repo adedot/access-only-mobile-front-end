@@ -32,9 +32,6 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-
-
-
 .controller('VenuesCtrl', function($scope, $http) {
 
   $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
@@ -45,18 +42,21 @@ angular.module('starter.controllers', [])
   // On click set the amount
   $scope.submit = function() {
 
-      sessionStorage.transaction_number = 8000;
+    sessionStorage.transaction_number = 8000;
 
   }; 
 
 })
-
 .controller('VenueCtrl', function($scope, $stateParams, $http) {
 
-  var venueId = $stateParams["id"];
+  
+  sessionStorage.venueId = $stateParams["id"];
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId).success(function(data) {
+
+  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+sessionStorage.venueId)
+      .success(function(data) {
         $scope.venues = data;
+        sessionStorage.venueName = data[0].name;
         console.log($scope.venues);
       });
 
@@ -68,12 +68,11 @@ angular.module('starter.controllers', [])
   }; 
 
 })
-
 .controller('ProductsCtrl', function($scope, $stateParams, $http) {
 
   var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/products/"+venueId).success(function(data) {
+  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId+ "/products").success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
@@ -108,6 +107,8 @@ angular.module('starter.controllers', [])
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
         cartId: sessionStorage.transaction_number,
+        venueId: sessionStorage.venueId,
+        name: sessionStorage.name,
         email: sessionStorage.email, 
         phone: sessionStorage.phone
       }).success(function(data) {
@@ -131,10 +132,12 @@ angular.module('starter.controllers', [])
 
 
     $scope.order_info = {
+      venueName: sessionStorage.venueName,
       name: sessionStorage.name, 
       email: sessionStorage.email, 
-        phone: sessionStorage.phone,
-      amount:sessionStorage.amount};
+      phone: sessionStorage.phone,
+      amount:sessionStorage.amount
+    };
 
     // On click set the amount
   $scope.submit = function(product) {
