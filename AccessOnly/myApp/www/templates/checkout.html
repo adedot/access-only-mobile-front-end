@@ -4,10 +4,13 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
   <div class="list list-inset">
-    <h1>Checkout</h1>
+    <h1>Checkout Page</h1>
     <!-- Add credit card form-->
     <ion-list>
 	    <form role="form" ng-submit="processForm()">
+	    
+	    <h3> Charge Amount: ${{price}} </h3>
+
 	    <label class="item item-input"> Name on Card</label>
 	    <input type="text" id="cc-name" ng-model="payload.name" autocomplete="off" placeholder="John Doe" />
 	    

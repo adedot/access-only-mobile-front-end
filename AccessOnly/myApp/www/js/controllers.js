@@ -88,6 +88,8 @@ angular.module('starter.controllers', [])
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
 
+  $scope.price = sessionStorage.amount;
+
   // Get Credit Card Information and create credit card charge
   $scope.submit = function(payload, user) {
 
