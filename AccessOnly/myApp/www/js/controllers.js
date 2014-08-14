@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
 })
 .controller('VenuesCtrl', function($scope, $http) {
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
+  $scope.venues = $http.get("http://localhost:5000/venues").success(function(data) {
       $scope.venues = data;
       console.log(scope.venues);
     });
@@ -53,7 +53,7 @@ angular.module('starter.controllers', [])
   sessionStorage.venueId = $stateParams["id"];
 
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+sessionStorage.venueId)
+  $scope.venues = $http.get("http://localhost:5000/venues/"+sessionStorage.venueId)
       .success(function(data) {
         $scope.venues = data;
         sessionStorage.venueName = data[0].name;
@@ -72,7 +72,7 @@ angular.module('starter.controllers', [])
 
   var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId+ "/products").success(function(data) {
+  $scope.products = $http.get("http://localhost:5000/venues/"+venueId+ "/products").success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
@@ -103,7 +103,7 @@ angular.module('starter.controllers', [])
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
-       $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
+       $scope.data = $http.post("http://localhost:5000/cart/checkout", {
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
         cartId: sessionStorage.transaction_number,
