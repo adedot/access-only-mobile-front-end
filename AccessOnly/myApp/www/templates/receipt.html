@@ -1,5 +1,8 @@
-<ion-view title="Venue">
-  <ion-content class="has-header">
+<ion-view>
+	<ion-nav-buttons side="left">
+    	<button menu-toggle="left" class="button-icon icon ion-navicon"></button>
+  	</ion-nav-buttons>
+  <ion-content>
     <h1>Customer Receipt for {{order_info.name}}</h1>
     <ion-list>
 
@@ -10,7 +13,7 @@
 
       	
 
-      	    <!-- SUBMIT BUTTON -->
+      	 <!-- SUBMIT BUTTON -->
 		<button id="cc-submit" ng-click="submit()" type="submit" class="btn btn-success btn-lg btn-block">
 			<span class="glyphicon glyphicon-flash"></span> Back to the Venues
 		</button>
