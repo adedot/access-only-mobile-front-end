@@ -3,7 +3,7 @@
     <h1 class="title">Access Only</h1>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
+    <form>
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Name</span>
@@ -11,10 +11,10 @@
         </label>
         <label class="item item-input">
           <span class="input-label">Access</span>
-          <input type="password" ng-model="loginData.password">
+          <input type="text" ng-model="loginData.access_code">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Unlock Access</button>
+          <button ng-click="doLogin(loginData)" class="button button-block button-positive" type="submit">Unlock Access</button>
         </label>
       </div>
     </form>
