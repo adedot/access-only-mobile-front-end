@@ -1,28 +1,37 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $timeout, $location) {
+.controller('AppCtrl', function($scope, $http, $location) {
   // Form data for the login modal
-  $scope.loginData = {};
-
-
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  $scope.doLogin = function(loginData) {
+    console.log('Doing login', loginData);
 
+    $http.post("http://localhost:5000/users/login",{
+      access_code: loginData.access_code
+    }).success(function(response){
+
+        if(response.code == "OK"){
+            $location.path( "/app/venues" );
+          }
+          else{
+            alert(loginData.access_code + " is wrong");
+          }
+      }
+    );
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
-    $timeout(function() {
-      // Go to the venue Page
-    $location.path( "/app/venues" );
-    }, 1000);
+    // $timeout(function() {
+    //   // Go to the venue Page
+
+    // }, 1000);
 
   };
 
 })
 .controller('VenuesCtrl', function($scope, $http) {
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
+  $scope.venues = $http.get("http://localhost:5000/venues").success(function(data) {
       $scope.venues = data;
       console.log(scope.venues);
     });
@@ -41,7 +50,7 @@ angular.module('starter.controllers', [])
   sessionStorage.venueId = $stateParams["id"];
 
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+sessionStorage.venueId)
+  $scope.venues = $http.get("http://localhost:5000/venues/"+sessionStorage.venueId)
       .success(function(data) {
         $scope.venues = data;
         sessionStorage.venueName = data[0].name;
@@ -60,7 +69,7 @@ angular.module('starter.controllers', [])
 
   var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId+ "/products").success(function(data) {
+  $scope.products = $http.get("http://localhost:5000/venues/"+venueId+ "/products").success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
@@ -93,7 +102,7 @@ angular.module('starter.controllers', [])
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
-       $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
+       $scope.data = $http.post("http://localhost:5000/cart/checkout", {
         uri: fundingInstrument.href,
         amount: sessionStorage.amount, 
         cartId: sessionStorage.transaction_number,

@@ -47,26 +47,61 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.login', {
+      url: "/login",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/login.html",
+          controller: 'AppCtrl'
         }
       }
     })
-
-    .state('app.single', {
-      url: "/playlists/:playlistId",
+     .state('app.checkout', {
+      url: "/checkout",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlist.html",
-          controller: 'PlaylistCtrl'
+          templateUrl: "templates/checkout.html",
+          controller: 'CheckoutCtrl'
+        }
+      }
+    })
+    .state('app.receipt', {
+      url: "/receipt",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/receipt.html",
+          controller: 'ReceiptCtrl'
+        }
+      }
+    })
+    .state('app.venues', {
+      url: "/venues",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/venues.html",
+          controller: 'VenuesCtrl'
+        }
+      }
+    })
+    .state('app.products', {
+      url: "/venues/products/:id",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/venueproducts.html",
+          controller: 'ProductsCtrl'
+        }
+      }
+    })
+    .state('app.single', {
+      url: "/venues/:id",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/venue.html",
+          controller: 'VenueCtrl'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/login');
 });
 

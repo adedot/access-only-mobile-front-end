@@ -16,3 +16,27 @@
 2014-07-31 16:46:10.216 myApp[1166:70b] Resetting plugins due to page load.
 2014-07-31 16:46:12.432 myApp[1166:70b] Finished load of: file:///Users/Adetola/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F36AEF39-5E6F-485D-A622-B0C8DE6686E9/myApp.app/www/index.html#/app/playlists
 2014-07-31 16:46:13.058 myApp[1166:70b] THREAD WARNING: ['Device'] took '14.145752' ms. Plugin should use a background thread.
+2014-08-15 12:33:44.594 myApp[28277:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-15 12:33:45.170 myApp[28277:70b] Unlimited access to network resources
+2014-08-15 12:33:52.960 myApp[28277:70b] [CDVTimer][keyboard] 79.299033ms
+2014-08-15 12:33:52.977 myApp[28277:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-15 12:33:52.977 myApp[28277:70b] [CDVTimer][statusbar] 0.731051ms
+2014-08-15 12:33:52.978 myApp[28277:70b] [CDVTimer][TotalPluginStartup] 96.971989ms
+2014-08-15 12:33:58.788 myApp[28277:70b] Resetting plugins due to page load.
+2014-08-15 12:34:07.911 myApp[28277:70b] Finished load of: file:///Users/Adetola/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F36AEF39-5E6F-485D-A622-B0C8DE6686E9/myApp.app/www/index.html#/app/login
+2014-08-15 12:34:46.910 myApp[28450:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-15 12:34:46.974 myApp[28450:70b] Unlimited access to network resources
+2014-08-15 12:34:47.012 myApp[28450:70b] [CDVTimer][keyboard] 0.091016ms
+2014-08-15 12:34:47.012 myApp[28450:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-15 12:34:47.013 myApp[28450:70b] [CDVTimer][statusbar] 0.451028ms
+2014-08-15 12:34:47.013 myApp[28450:70b] [CDVTimer][TotalPluginStartup] 1.516998ms
+2014-08-15 12:34:47.675 myApp[28450:70b] Resetting plugins due to page load.
+2014-08-15 12:34:48.955 myApp[28450:70b] Finished load of: file:///Users/Adetola/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/F36AEF39-5E6F-485D-A622-B0C8DE6686E9/myApp.app/www/index.html#/app/login
+2014-08-15 12:50:44.672 myApp[28728:70b] Multi-tasking -> Device: YES, App: YES
+2014-08-15 12:50:44.724 myApp[28728:70b] Unlimited access to network resources
+2014-08-15 12:50:44.792 myApp[28728:70b] [CDVTimer][keyboard] 24.050951ms
+2014-08-15 12:50:44.792 myApp[28728:70b] CDVPlugin class CDVStatusBar (pluginName: statusbar) does not exist.
+2014-08-15 12:50:44.793 myApp[28728:70b] [CDVTimer][statusbar] 0.482023ms
+2014-08-15 12:50:44.793 myApp[28728:70b] [CDVTimer][TotalPluginStartup] 25.579035ms
+2014-08-15 12:50:45.787 myApp[28728:70b] Resetting plugins due to page load.
+2014-08-15 12:50:47.216 myApp[28728:70b] Finished load of: file:///Users/Adetola/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/51F50DC9-1933-4888-A575-AB44A74ABA9D/myApp.app/www/index.html#/app/login
