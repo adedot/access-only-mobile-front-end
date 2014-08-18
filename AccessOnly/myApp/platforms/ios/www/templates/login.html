@@ -1,20 +1,21 @@
-<ion-view title="Access Only">
+<ion-view title="AccessOnly">
   <ion-header-bar>
-    <h1 class="title">Access Only</h1>
+    <h1 class="title">AccessOnly</h1>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doLogin()">
+
+    <form>
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Name</span>
+          <span class="input-label">name</span>
           <input type="text" ng-model="loginData.username">
         </label>
         <label class="item item-input">
-          <span class="input-label">Access</span>
-          <input type="password" ng-model="loginData.password">
+          <span class="input-label">access code</span>
+          <input type="text" ng-model="loginData.access_code">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Unlock Access</button>
+          <button ng-click="doLogin(loginData)" class="button button-block button-positive" type="submit">ENTER THE NIGHT</button>
         </label>
       </div>
     </form>

@@ -1,21 +1,24 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $timeout, $location) {
+.controller('AppCtrl', function($scope, $http, $location) {
   // Form data for the login modal
-  $scope.loginData = {};
-
-
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  $scope.doLogin = function(loginData) {
+    console.log('Doing login', loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      // Go to the venue Page
-    $location.path( "/app/venues" );
-    }, 1000);
+    $http.post("http://access-only-back-end.herokuapp.com/users/login",{
+      access_code: loginData.access_code
+    }).success(function(response){
+
+        if(response.code == "OK"){
+            $location.path( "/app/venues" );
+          }
+          else{
+            alert(loginData.access_code + " is wrong");
+          }
+      }
+    );
 
   };
 

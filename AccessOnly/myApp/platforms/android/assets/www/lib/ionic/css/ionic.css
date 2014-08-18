@@ -2237,7 +2237,10 @@ body.grade-b, body.grade-c {
   overflow: hidden;
   margin-top: -1px;
   width: auto;
-  height: auto; }
+  height: auto; 
+  background-color: #010101;
+  background-image: url('/img/Login_Image.png'); /* Added AccessOnly CSS */
+}
 
 .scroll-content-false, .menu .scroll-content.scroll-content-false {
   z-index: 11; }
@@ -2756,11 +2759,11 @@ a.subdued {
       background-image: linear-gradient(180deg, #ddd, #ddd 50%, transparent 50%); }
   .bar.bar-stable {
     border-color: #b2b2b2;
-    background-color: #f8f8f8;
+    background-color: #121317; /* Access Only CSS */
     background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
     color: #444; }
     .bar.bar-stable .title {
-      color: #444; }
+      color: #ffffff; } /* Access Only CSS */
     .bar.bar-stable.bar-footer {
       background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
@@ -2932,7 +2935,7 @@ a.subdued {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #444;
+    color: #ffffff;  /* Access Only CSS Change  */
     font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
@@ -3687,16 +3690,16 @@ a.subdued {
  * --------------------------------------------------
  */
 .item {
-  border-color: #ddd;
-  background-color: #fff;
+  /* border-color: #ddd;  Access Only CSS Change */
+  /* background-color: #fff; Access Only CSS Change */
   color: #444;
   position: relative;
   z-index: 2;
   display: block;
   margin: -1px;
-  padding: 15px;
-  border-width: 1px;
-  border-style: solid;
+  padding: 15px 25px; /* Access Only CSS Change */
+  /* border-width: 1px; Access Only CSS Change */
+  /* border-style: solid; Access Only CSS Change */
   font-size: 16px; }
   .item h2 {
     margin: 0 0 4px 0;
@@ -4538,7 +4541,11 @@ input, button, select, textarea {
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 6px 0 5px 8px; }
+  padding: 6px 0 0px 8px; /* Access Only CSS Change */
+  margin: 15px 25px; /* Access Only CSS Change */
+  background-color: #B3B2B2; /* Access Only CSS Change */
+  border-color: #B3B2B2; /* Access Only CSS Change */
+   }
   .item-input input {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -5385,8 +5392,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-positive {
-    border-color: #145fd7;
-    background-color: #4a87ee;
+    border-color: #06AEE9;  /* AccessOnly CSS Change */
+    background-color: #06AEE9; /* AccessOnly CSS Change */
     color: #fff; }
     .button.button-positive:hover {
       color: #fff;
