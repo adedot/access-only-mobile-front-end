@@ -42,6 +42,7 @@
 		E169103D74B94833BF714EF4 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A1C2FF82124AF2A0013465 /* UIWebViewExtension.m */; };
 		C429886BE17646B8B77A21FD /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F79BD4AE928C4E419D935F4B /* CDVLogger.m */; };
 		A9A85399E5654D38A7CD3EBC /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DC89CDBD542BCAC8B566F /* CDVDevice.m */; };
+		67CD4BE76C4E4869A57A9F6A /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 772FBD6367BF4E11802D56A3 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,8 @@
 		2819C2E8E79C4C888DB68EFF /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		7B4DC89CDBD542BCAC8B566F /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		BEFD531932AE4E0C81240664 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		772FBD6367BF4E11802D56A3 /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "org.apache.cordova.statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		50DF494690564440A30ACB1C /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "org.apache.cordova.statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				2819C2E8E79C4C888DB68EFF /* CDVLogger.h */,
 				7B4DC89CDBD542BCAC8B566F /* CDVDevice.m */,
 				BEFD531932AE4E0C81240664 /* CDVDevice.h */,
+				772FBD6367BF4E11802D56A3 /* CDVStatusBar.m */,
+				50DF494690564440A30ACB1C /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "myApp/Plugins";
@@ -440,6 +445,7 @@
 				E169103D74B94833BF714EF4 /* UIWebViewExtension.m in Sources */,
 				C429886BE17646B8B77A21FD /* CDVLogger.m in Sources */,
 				A9A85399E5654D38A7CD3EBC /* CDVDevice.m in Sources */,
+				67CD4BE76C4E4869A57A9F6A /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
