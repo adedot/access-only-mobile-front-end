@@ -2267,7 +2267,7 @@ body.grade-b, body.grade-c {
   -webkit-transform-origin: left top;
   -moz-transform-origin: left top;
   transform-origin: left top;
-  background-color: white; }
+  background-color: white; } /* AccessOnly CSS Change */
 
 ::-webkit-scrollbar {
   display: none; }
