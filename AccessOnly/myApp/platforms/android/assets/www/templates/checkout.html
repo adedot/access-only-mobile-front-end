@@ -1,0 +1,45 @@
+<ion-view title="Checkout">
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+  <div class="list list-inset">
+    <h1>Checkout Page</h1>
+    <!-- Add credit card form-->
+    <ion-list>
+	    <form role="form" ng-submit="processForm()">
+	    
+	    <h3> Charge Amount: ${{price}} </h3>
+
+	    <label class="item item-input"> Name on Card</label>
+	    <input type="text" id="cc-name" ng-model="payload.name" autocomplete="off" placeholder="John Doe" />
+	    
+	    <label class="item item-input">Email Adderess</label>
+	    <input type="text" id="email" ng-model="user.email" autocomplete="off" placeholder="john.doe@doe.com" />
+
+	    <label class="item item-input">Phone</label>
+	    <input type="text" id="phone" ng-model="user.phone" autocomplete="off" placeholder="555 555 5555" />
+
+	  	
+	    <label class="item item-input">Card Number</label>
+	    <input type="text" id="cc-number" ng-model="payload.number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
+	  
+	  
+	    <label class="item item-input">Expiration</label>
+	    <input type="text" id="cc-ex-month" ng-model="payload.expiration_month" autocomplete="off" placeholder="01" maxlength="2" />
+	    <input type="text" id="cc-ex-year" ng-model="payload.expiration_year" autocomplete="off" placeholder="2015" maxlength="4" />
+	  
+	  
+	    <label class="item item-input">Card Verification Code (CVV)</label>
+	    <input type="text" id="ex-cvv" ng-model="payload.cvv" autocomplete="off" placeholder="453" maxlength="4" />
+
+	    <!-- SUBMIT BUTTON -->
+		<button id="cc-submit" ng-click="submit(payload, user)" type="submit" class="btn btn-success btn-lg btn-block">
+			<span class="glyphicon glyphicon-flash"></span> Complete Booking
+		</button>
+
+		</form>
+	</div>
+	</ion-list>
+  </ion-content>
+</ion-view>
