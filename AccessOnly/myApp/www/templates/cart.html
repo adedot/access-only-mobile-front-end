@@ -1,0 +1,18 @@
+<ion-view title="Cart">
+  <ion-content class="has-header">
+    <h1>Cart</h1>
+    <ion-list>
+      <ion-item ng-repeat="product in products">
+      	
+        <p>{{product.name}}</p>
+        <p>Price: ${{product.price}}</p>
+        <p>{{product.description}}</p>
+      </ion-item>
+
+               <!-- SUBMIT BUTTON -->
+    <button id="cc-submit" ng-click="submit()" type="submit" class="btn btn-success btn-lg btn-block">
+      <span class="glyphicon glyphicon-flash">Checkout</span> 
+    </button>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -128,6 +128,7 @@
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/plugins/org.apache.cordova.statusbar/www/statusbar.js \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/browse.html \
+/Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/cart.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/checkout.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/login.html \
 /Users/Adetola/node-projects/access-only-mobile-front-end/AccessOnly/myApp/platforms/android/assets/www/templates/menu.html \

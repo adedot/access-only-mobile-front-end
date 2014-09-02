@@ -15,6 +15,7 @@ angular.module('starter.controllers', [])
     }).success(function(response){
 
         if(response.code == "OK"){
+          sessionStorage.transaction_number = 0;
             $location.path( "/app/venues" );
           }
           else{
@@ -30,7 +31,7 @@ angular.module('starter.controllers', [])
 
   $scope.venues = $http.get(uri +"venues").success(function(data) {
       $scope.venues = data;
-      console.log(scope.venues);
+      console.log($scope.venues);
     });
 
   // // On click set the amount
@@ -54,25 +55,21 @@ angular.module('starter.controllers', [])
         console.log($scope.venues);
       });
 
-  // On click set the amount
-  $scope.submit = function() {
-
-    if(sessionStorage.transaction_number != 0){
-           
-            var d = new Date().getTime();
-            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                var r = (d + Math.random()*16)%16 | 0;
-                d = Math.floor(d/16);
-                return (c=='x' ? r : (r&0x7|0x8)).toString(16);
-            });
-            sessionStorage.transaction_number = uuid;
-            
-      }
-
-  }; 
 
 })
 .controller('ProductsCtrl', function($scope, $stateParams, $http) {
+
+  if(sessionStorage.transaction_number == 0 || sessionStorage.transaction_number === 'undefined'){
+         
+          var d = new Date().getTime();
+          var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              var r = (d + Math.random()*16)%16 | 0;
+              d = Math.floor(d/16);
+              return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+          });
+          sessionStorage.transaction_number = uuid;
+          
+  }
 
   var venueId = $stateParams["id"];
 
@@ -105,6 +102,23 @@ angular.module('starter.controllers', [])
   }; 
 
 })
+.controller('CartCtrl', function($scope, $http, $location) {
+
+  var transactionId = sessionStorage.transaction_number;
+
+  // Get the products for cart
+  $scope.products = $http.get(uri + "orders/"+transactionId+ "/products").success(function(data) {
+        $scope.products = data;
+        console.log($scope.products);
+  });
+
+  $scope.submit = function() {
+
+    $location.path( "/app/checkout" );
+
+  }
+
+})
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
 
 
@@ -130,6 +144,7 @@ angular.module('starter.controllers', [])
         amount: sessionStorage.amount, 
         cartId: sessionStorage.transaction_number,
         venueId: sessionStorage.venueId,
+        venueName: sessionStorage.venueName,
         name: sessionStorage.name,
         email: sessionStorage.email, 
         phone: sessionStorage.phone

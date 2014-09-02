@@ -15,6 +15,7 @@ angular.module('starter.controllers', [])
     }).success(function(response){
 
         if(response.code == "OK"){
+          sessionStorage.transaction_number = 0;
             $location.path( "/app/venues" );
           }
           else{
@@ -30,7 +31,7 @@ angular.module('starter.controllers', [])
 
   $scope.venues = $http.get(uri +"venues").success(function(data) {
       $scope.venues = data;
-      console.log(scope.venues);
+      console.log($scope.venues);
     });
 
   // // On click set the amount
@@ -54,17 +55,11 @@ angular.module('starter.controllers', [])
         console.log($scope.venues);
       });
 
-  // On click set the amount
-  $scope.submit = function() {
-
-
-
-  }; 
 
 })
 .controller('ProductsCtrl', function($scope, $stateParams, $http) {
 
-  if(sessionStorage.transaction_number == 0){
+  if(sessionStorage.transaction_number == 0 || sessionStorage.transaction_number === 'undefined'){
          
           var d = new Date().getTime();
           var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -82,8 +77,6 @@ angular.module('starter.controllers', [])
         $scope.products = data;
         console.log($scope.products);
       });
-
-
 
 
 
@@ -107,6 +100,23 @@ angular.module('starter.controllers', [])
 
 
   }; 
+
+})
+.controller('CartCtrl', function($scope, $http, $location) {
+
+  var transactionId = sessionStorage.transaction_number;
+
+  // Get the products for cart
+  $scope.products = $http.get(uri + "orders/"+transactionId+ "/products").success(function(data) {
+        $scope.products = data;
+        console.log($scope.products);
+  });
+
+  $scope.submit = function() {
+
+    $location.path( "/app/checkout" );
+
+  }
 
 })
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
