@@ -1,5 +1,5 @@
 
-var uri = "http://access-only-back-end.herokuapp.com/";
+var uri = "https://apps.getaccessonly.com/";
 
 angular.module('starter.controllers', [])
 
@@ -187,4 +187,3 @@ angular.module('starter.controllers', [])
 
 
 })
-
