@@ -1,14 +1,21 @@
 <ion-view title="Cart">
   <ion-content class="has-header">
     <h1>Cart</h1>
-    <ion-list>
-      <ion-item ng-repeat="product in products">
-      	
-        <p>{{product.name}}</p>
-        <p>Price: ${{product.price}}</p>
-        <p>{{product.description}}</p>
-      </ion-item>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
 
+    <ion-list show-delete="shouldShowDelete" 
+              can-swipe="listCanSwipe">
+      <ion-item ng-repeat="product in products">
+      	   <input type="hidden" ng-model="product.id">
+          <p>{{product.name}}</p>
+        
+          <p>Price: ${{product.price}}</p>
+          <p>{{product.description}}</p>
+        
+    </ion-item>
                <!-- SUBMIT BUTTON -->
     <button id="cc-submit" ng-click="submit()" type="submit" class="btn btn-success btn-lg btn-block">
       <span class="glyphicon glyphicon-flash">Checkout</span> 
