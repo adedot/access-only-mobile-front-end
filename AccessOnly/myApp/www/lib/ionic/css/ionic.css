@@ -2246,7 +2246,6 @@ body.grade-b, body.grade-c {
   width: auto;
   height: auto; 
   background-color: #010101;
-  background-image: url('/img/Login_Image.png'); /* Added AccessOnly CSS */
 }
 
 .scroll-content-false, .menu .scroll-content.scroll-content-false {
