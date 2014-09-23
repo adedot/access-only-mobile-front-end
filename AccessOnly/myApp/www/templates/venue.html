@@ -1,14 +1,35 @@
-<ion-view title="{{venue.name}}">
+<ion-view title="EXPERIENCES">
+<!-- <ion-view title="{{venue.name}}">
+-->
   <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button-icon icon ion-navicon"></button>
+    <button menu-toggle="left" class="button-icon icon ion-navicon" style="color:#ffffff;"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header">
+  <ion-content class="has-header" style="background-color: #D8D8D8">
+      <div class="row" style="padding: 0px; margin: 0px; background-color: #464646;">
+          <div class="col" style="padding: 0px; margin: 0px;"><img src="/img/venue_default_image.png" style="padding: 0px; margin: 0px;" width="320px"></div>
+      </div>
+      <div class="row" style="background-color: #464646; padding: 0px; margin: 0px; padding-bottom: 15px;">
+          <div class="col"></div>
+          <div class="col col-75" style="text-align: left;"><h1 style="color: #ffffff; font-family: avantgarde_bk_bt_demi !important; letter-spacing: 1px; font-size: 16px; padding: 10px 0px 5px 0px; margin-bottom: 0px; ";>SELECT YOUR EXPERIENCE</h1>
+          <span style="font-size: 12px; padding: 0px 0px 5px 0px; color: #ffffff; margin-bottom: 10px;">Browse table and party options.</span>
+          </div>
+          <div class="col" style="text-align: center; "><i class="icon ion-android-arrow-forward" style="font-size: 40px; position: relative; top: 10px; color: #E5168F; "></i></div>
+      </div>
+      <style>
+    a.item-content {
+      background-color: #D8D8D8 !important;
+    }
+  </style>
     <ion-list>
       <ion-item ng-repeat="venue in venues" href="#/app/venues/products/{{venue.id}}" ng-click="submit()">
-       <p>Name: {{venue.name}} </p>
-      <p>Address: {{venue.address}}</p>
-      <p> {{venue.city}}, {{venue.state}} </p>
+       <p style="font-size: 28px; font-family: avantgarde_bk_bt_demi; color: #E5168F; padding: 10px 0px 5px 0px; text-transform: uppercase; margin: 0px !important; ">{{venue.name}} <i class="ion-ios7-star" style="font-size: 16px; color: #06AEE9; "></i><i class="ion-ios7-star" style="font-size: 16px; color: #06AEE9; "></i><i class="ion-ios7-star" style="font-size: 16px; color: #06AEE9; "></i><i class="ion-ios7-star-half" style="font-size: 16px; color: #06AEE9; "></i></p>
+       <p style="font-size: 14px; font-weight: bold; color: #464646; padding: 0px; margin: 0px !important; ">{{venue.address}}</p>
+       <p style="font-size: 14px; font-weight: bold; color: #464646; padding: 0px; margin: 0px !important; "> {{venue.city}}, {{venue.state}} </p>
       </ion-item>
     </ion-list>
+    <p style="font-size: 12px; color: #464646; padding: 0px 15px; margin: 0px !important; background-color: #D8D8D8 !important; "> A lively dinner with friends, a night out on the town or a private reception for your office - This venue has it all covered with style and finesse. <br/><br/>Dress code: No sneakers! </p>
   </ion-content>
+  <div class="bar bar-footer bar-balanced" style="color: #464646; height: 60px; background-color: #06AEE9 !important; ">
+  <div class="title" style="font-size: 24px; font-family: avantgarde_bk_bt_demi; padding: 8px 0px 0px 0px;">SELECT EXPERIENCE</div>
+</div>
 </ion-view>
