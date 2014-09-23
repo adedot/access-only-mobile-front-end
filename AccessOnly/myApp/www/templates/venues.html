@@ -2,10 +2,22 @@
   <ion-nav-buttons side="left" hide-back-button="true">
     <button menu-toggle="left" class="button-icon icon ion-navicon" style="color:#ffffff;"></button>
   </ion-nav-buttons>
-  <ion-content class="has-header" style="background-image: url('/img/fancy-pants.png'); background-repeat: repeat;">
+  <ion-content class="has-header" style="background-image: url('/img/fancy-pants.png');">
+  <div class="row" style=" background-color: black; background-image: url('/img/Listing_Subheading.png');" >
+  <!-- background-image: url('/img/fancy-pants.png'); -->
+      <div class="col"></div>
+      <div class="col col-75"><h1 style="color: #ffffff; font-family: avantgarde_bk_bt_demi !important; letter-spacing: 4px; font-size: 18px; padding: 25px 0px 15px 0px">YOU HOLD THE KEY</h1></div>
+      <div class="col"></div>
+  </div>
     <ion-list>
-      <ion-item ng-repeat="venue in venues" href="#/app/venues/{{venue.id}}" ng-click="submit()">
-       <p>{{venue.name}} </p>
+  <style>
+    a.item-content {
+      background-image: url('/img/venue_default_image.png');
+    }
+  </style>
+      <ion-item style="background-image: url('/img/venue_default_image.png');" ng-repeat="venue in venues" href="#/app/venues/{{venue.id}}" ng-click="submit()">
+       <p style="font-size: 28px; font-family: avantgarde_bk_bt_demi; color: #ffffff; padding: 90px 0px 0px 0px; text-transform: uppercase; margin: 0px !important;">{{venue.name}} </p>
+       <span style="font-size: 12px; padding: 0px 0px 5px 0px; color: #ffffff;">/ Washington, DC</span>
       </ion-item>
     </ion-list>
   </ion-content>
