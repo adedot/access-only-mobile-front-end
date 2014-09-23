@@ -2,7 +2,8 @@
   <ion-content class="has-header">
     <h1>Products</h1>
     <ion-list>
-      <ion-item ng-repeat="product in products" href="#/app/checkout" ng-click="submit(product)">
+      <ion-item ng-repeat="product in products" href="#/app/cart" ng-click="submit(product)">
+      	<input type="hidden" ng-model="product.id">
         <p>{{product.name}}</p>
         <p>Price: ${{product.price}}</p>
         <p>{{product.description}}</p>

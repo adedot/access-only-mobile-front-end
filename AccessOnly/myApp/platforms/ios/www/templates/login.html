@@ -1,21 +1,29 @@
-<ion-view title="AccessOnly">
+<ion-view title="SIGN / IN">
   <ion-header-bar>
-    <h1 class="title">AccessOnly</h1>
-  </ion-header-bar>
-  <ion-content>
-
+     <h1 class="title"></h1>
+  </ion-header-bar> 
+  <ion-content style="background-color: #474747; background-image: url('/img/fancy-pants.png'); background-repeat: repeat-y;" >
+   <div class="row" style=" background-color: black;  background-image: url('/img/fancy-pants.png');" >
+  <!-- background-image: url('/img/fancy-pants.png'); -->
+      <div class="col"></div>
+      <div class="col col-75"><img src="/img/accessonly_logo-01.png" width="220px" align="center"></div>
+      <div class="col"></div>
+  </div>
     <form>
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">name</span>
+      <div class="list" style="background-color: #474747; background-image: url('/img/Login_Image_3_copy.png');">
+      <p style="color: #B3B2B2; padding-left: 8%; padding-bottom: -10px; font-family: avantgarde_bk_bt_demi !important; letter-spacing: 6px; font-size: 11px; padding-top: 15px;">
+      /MEMBERS ONLY
+      </p>
+        <label class="item item-input" style="background-color: #464646; border-color: #464646; padding:15px 0 0px 8px; margin: 10px 25px;">
+          <span class="input-label" style="color: #B3B2B2;">name</span>
           <input type="text" ng-model="loginData.username">
         </label>
-        <label class="item item-input">
-          <span class="input-label">access code</span>
+        <label class="item item-input" style="background-color: #464646; border-color: #464646; padding:15px 0 0px 8px; margin: 10px 25px;">
+          <span class="input-label" style="color: #B3B2B2;">access code</span>
           <input type="text" ng-model="loginData.access_code">
         </label>
         <label class="item">
-          <button ng-click="doLogin(loginData)" class="button button-block button-positive" type="submit">ENTER THE NIGHT</button>
+          <button ng-click="doLogin(loginData)" class="button button-block button-positive" type="submit" style="margin-top: 0px;">ENTER THE NIGHT</button>
         </label>
       </div>
     </form>

@@ -2739,7 +2739,7 @@ a.subdued {
       background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
       background-position: bottom;
       background-size: 100% 1px;
-      background-repeat: no-repeat; } }
+      background-repeat: no-repeat; }
   .bar.bar-clear {
     border: none;
     background: none;
@@ -2850,7 +2850,8 @@ a.subdued {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 17px;
-    line-height: 44px; }
+    line-height: 44px;
+    font-family: avantgarde_bk_bt_demi; }
     .bar .title.title-left {
       text-align: left; }
     .bar .title.title-right {

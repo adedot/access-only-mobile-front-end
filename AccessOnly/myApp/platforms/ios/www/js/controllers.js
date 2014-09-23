@@ -1,3 +1,7 @@
+
+var uri = "https://apps.getaccessonly.com/";
+// var uri = "http://localhost:5000/"
+
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $http, $location) {
@@ -7,11 +11,12 @@ angular.module('starter.controllers', [])
   $scope.doLogin = function(loginData) {
     console.log('Doing login', loginData);
 
-    $http.post("http://access-only-back-end.herokuapp.com/users/login",{
+    $http.post(uri + "users/login",{
       access_code: loginData.access_code
     }).success(function(response){
 
         if(response.code == "OK"){
+          sessionStorage.transaction_number = 0;
             $location.path( "/app/venues" );
           }
           else{
@@ -25,17 +30,11 @@ angular.module('starter.controllers', [])
 })
 .controller('VenuesCtrl', function($scope, $http) {
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues").success(function(data) {
+  $scope.venues = $http.get(uri +"venues").success(function(data) {
       $scope.venues = data;
-      console.log(scope.venues);
+      console.log($scope.venues);
     });
 
-  // On click set the amount
-  $scope.submit = function() {
-
-    sessionStorage.transaction_number = 8000;
-
-  }; 
 
 })
 .controller('VenueCtrl', function($scope, $stateParams, $http) {
@@ -44,36 +43,86 @@ angular.module('starter.controllers', [])
   sessionStorage.venueId = $stateParams["id"];
 
 
-  $scope.venues = $http.get("http://access-only-back-end.herokuapp.com/venues/"+sessionStorage.venueId)
+  $scope.venues = $http.get(uri + "venues/"+sessionStorage.venueId)
       .success(function(data) {
         $scope.venues = data;
         sessionStorage.venueName = data[0].name;
         console.log($scope.venues);
       });
 
-  // On click set the amount
-  $scope.submit = function() {
-
-      sessionStorage.transaction_number = 8000;
-
-  }; 
 
 })
-.controller('ProductsCtrl', function($scope, $stateParams, $http) {
+.controller('ProductsCtrl', function($scope, $stateParams, $http, $q, $timeout) {
+
+  if(sessionStorage.transaction_number == 0 || sessionStorage.transaction_number === 'undefined'){
+         
+          var d = new Date().getTime();
+          var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              var r = (d + Math.random()*16)%16 | 0;
+              d = Math.floor(d/16);
+              return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+          });
+          sessionStorage.transaction_number = uuid;
+          
+  }
 
   var venueId = $stateParams["id"];
 
-  $scope.products = $http.get("http://access-only-back-end.herokuapp.com/venues/"+venueId+ "/products").success(function(data) {
+  $scope.products = $http.get(uri + "venues/"+venueId+ "/products").success(function(data) {
         $scope.products = data;
         console.log($scope.products);
       });
 
-    // On click set the amount
+
+
+  // On click set the amount
   $scope.submit = function(product) {
 
       sessionStorage.amount = product.price;
 
+      var defer = $q.defer();
+
+
+    // Post Cart item
+    $http.post(uri + "cart/additem",
+      {
+        cartId:sessionStorage.transaction_number,
+        quantity: 1,
+        productId: product.id,
+        price: product.price
+         
+      }).success(function(data){
+        // $timeout(2000);
+         $timeout(function(){
+          
+          defer.resolve(data);
+          $scope.products = data;
+          console.log($scope.products);
+        }, 1000);
+
+    });
+
+
   }; 
+
+})
+.controller('CartCtrl', function($scope, $http, $location,  $timeout) {
+
+  var transactionId = sessionStorage.transaction_number;
+
+  // Get the products for cart
+  $scope.products = $http.get(uri + "orders/"+transactionId+ "/products")
+  .success(function(data) {
+        $scope.products = data;
+        console.log($scope.products);
+   
+  });
+
+  $scope.submit = function() {
+
+    $location.path( "/app/checkout" );
+
+  }
 
 })
 .controller('CheckoutCtrl', function($scope, $stateParams, $http, $location) {
@@ -92,30 +141,41 @@ angular.module('starter.controllers', [])
 
   };
 
-    function handleResponse(response) {
-    if (response.status_code === 201) {
-      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-      // Call your backend
-       $scope.data = $http.post("http://access-only-back-end.herokuapp.com/cart/checkout", {
-        uri: fundingInstrument.href,
-        amount: sessionStorage.amount, 
-        cartId: sessionStorage.transaction_number,
-        venueId: sessionStorage.venueId,
-        name: sessionStorage.name,
-        email: sessionStorage.email, 
-        phone: sessionStorage.phone
-      }).success(function(data) {
-          // Go to Receipt Page
-          $location.path( "/app/receipt" );
-          $scope.data = data;
-       
-      });
+  $scope.delete = function(){
+    $http.delete(uri + "cart/remove", {
+
+    }).success(function(){
+      // 
+      console("data deleted");
+    });
+
+  }
+
+  function handleResponse(response) {
+      if (response.status_code === 201) {
+        var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+        // Call your backend
+         $scope.data = $http.post(uri + "cart/checkout", {
+          uri: fundingInstrument.href,
+          amount: sessionStorage.amount, 
+          cartId: sessionStorage.transaction_number,
+          venueId: sessionStorage.venueId,
+          venueName: sessionStorage.venueName,
+          name: sessionStorage.name,
+          email: sessionStorage.email, 
+          phone: sessionStorage.phone
+        }).success(function(data) {
+            // Go to Receipt Page
+            $location.path( "/app/receipt" );
+            $scope.data = data;
+         
+        });
 
 
-    } else {
-      alert("Process has failed");
-      // Failure page
-    }
+      } else {
+        alert("Process has failed");
+        // Failure page
+      }
   };
  
 
@@ -143,4 +203,3 @@ angular.module('starter.controllers', [])
 
 
 })
-
