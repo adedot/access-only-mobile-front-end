@@ -1,6 +1,8 @@
 
-var uri = "https://apps.getaccessonly.com/";
+//var uri = "https://apps.getaccessonly.com/";
 // var uri = "http://localhost:5000/"
+
+var uri = "http://access-only-back-end.herokuapp.com/";
 
 angular.module('starter.controllers', [])
 
